@@ -32,6 +32,17 @@
     
     <entry>
       <title></title>
+      <link href="/css/background.css"/>
+      <url>/css/background.css</url>
+      
+        <content type="html"><![CDATA[#web_bg {    /* 背景图像的地址（url括号里）  */    background: url(https://public.ysjf.com/creator/U52bejYG.jpg);    /* 背景图像不重复 */    background-repeat: no-repeat;    /* 背景图像大小 */    background-size: cover;  }  ]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
       

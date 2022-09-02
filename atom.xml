@@ -3,11 +3,11 @@
   <title>wjt&#39;s Blog</title>
   
   <subtitle>一个菜鸟的blog</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://minmin0516.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://minmin0516.github.io/"/>
   <updated>2022-09-02T02:33:54.036Z</updated>
-  <id>http://example.com/</id>
+  <id>https://minmin0516.github.io/</id>
   
   <author>
     <name>wjt</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/undefined/4a17b156.html"/>
-    <id>http://example.com/undefined/4a17b156.html</id>
+    <link href="https://minmin0516.github.io/undefined/4a17b156.html"/>
+    <id>https://minmin0516.github.io/undefined/4a17b156.html</id>
     <published>2022-09-02T00:55:46.947Z</published>
     <updated>2022-09-02T02:33:54.036Z</updated>
     
