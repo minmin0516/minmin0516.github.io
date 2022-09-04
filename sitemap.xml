@@ -2,16 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://minmin0516.github.io/manifest.json</loc>
+    <loc>https://minmin0516.github.io/undefined/4a17b156.html</loc>
     
-    <lastmod>2022-09-02</lastmod>
+    <lastmod>2022-09-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://minmin0516.github.io/undefined/4a17b156.html</loc>
+    <loc>https://minmin0516.github.io/undefined/d87f7e0c.html</loc>
+    
+    <lastmod>2022-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://minmin0516.github.io/manifest.json</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -27,6 +36,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://minmin0516.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 
   
