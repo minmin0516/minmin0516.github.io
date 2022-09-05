@@ -3,11 +3,11 @@
   <title>wjt&#39;s Blog</title>
   
   <subtitle>一个菜鸟的blog</subtitle>
-  <link href="https://minmin0516.github.io/atom.xml" rel="self"/>
+  <link href="https://my.wjtblog.online/atom.xml" rel="self"/>
   
-  <link href="https://minmin0516.github.io/"/>
+  <link href="https://my.wjtblog.online/"/>
   <updated>2022-09-05T11:18:49.814Z</updated>
-  <id>https://minmin0516.github.io/</id>
+  <id>https://my.wjtblog.online/</id>
   
   <author>
     <name>wjt</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>web抖音参数</title>
-    <link href="https://minmin0516.github.io/undefined/fbf31d6e.html"/>
-    <id>https://minmin0516.github.io/undefined/fbf31d6e.html</id>
+    <link href="https://my.wjtblog.online/undefined/fbf31d6e.html"/>
+    <id>https://my.wjtblog.online/undefined/fbf31d6e.html</id>
     <published>2022-09-05T05:32:00.000Z</published>
     <updated>2022-09-05T11:18:49.814Z</updated>
     
@@ -34,10 +34,10 @@
     
     
     
-    <category term="逆向" scheme="https://minmin0516.github.io/categories/%E9%80%86%E5%90%91/"/>
+    <category term="逆向" scheme="https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/"/>
     
     
-    <category term="技术" scheme="https://minmin0516.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://my.wjtblog.online/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
