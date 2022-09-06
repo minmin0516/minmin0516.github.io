@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://my.wjtblog.online/undefined/97526c3d.html</loc>
+    
+    <lastmod>2022-09-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://my.wjtblog.online/undefined/fbf31d6e.html</loc>
     
     <lastmod>2022-09-06</lastmod>
@@ -47,6 +56,20 @@
 
   
   <url>
+    <loc>https://my.wjtblog.online/tags/%E7%BE%8E%E5%A5%B3/</loc>
+    <lastmod>2022-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://my.wjtblog.online/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://my.wjtblog.online/tags/biya/</loc>
     <lastmod>2022-09-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -55,13 +78,6 @@
   
   <url>
     <loc>https://my.wjtblog.online/tags/%E5%8E%9F%E7%A5%9E/</loc>
-    <lastmod>2022-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://my.wjtblog.online/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2022-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
