@@ -29,31 +29,6 @@
     
     
     <entry>
-      <title>随机视频</title>
-      <link href="/undefined/7a71e863.html"/>
-      <url>/undefined/7a71e863.html</url>
-      
-        <content type="html"><![CDATA[<span class='p center logo large'>点刷新即可刷新随机小姐姐视频哦~</span><div class="video"><video controls preload><source src='https://tucdn.wpon.cn/api-girl/index.php?wpon=302' type='video/mp4'>Your browser does not support the video tag.</video></div><div class="btns circle center grid5">            <a href='https://my.wjtblog.online/undefined/7a71e863.html'>  <b>有情下一位心动女孩</b></a>          </div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 视频 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 美女 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>原神 torino</title>
       <link href="/undefined/daf3f053.html"/>
       <url>/undefined/daf3f053.html</url>
@@ -144,10 +119,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/background.css"/>
-      <url>/css/background.css</url>
+      <link href="/manifest.json"/>
+      <url>/manifest.json</url>
       
-        <content type="html"><![CDATA[#web_bg {    /* 背景图像的地址（url括号里）  */    background: url(https://public.ysjf.com/creator/U52bejYG.jpg);    /* 背景图像不重复 */    background-repeat: no-repeat;    /* 背景图像大小 */    background-size: cover;  }  ]]></content>
+        <content type="html"><![CDATA[{"name":"wjt`Blog","short_name":"wjt","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/144.png","sizes":"144x144","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
       
     </entry>
     
@@ -155,10 +130,10 @@
     
     <entry>
       <title></title>
-      <link href="/manifest.json"/>
-      <url>/manifest.json</url>
+      <link href="/css/background.css"/>
+      <url>/css/background.css</url>
       
-        <content type="html"><![CDATA[{"name":"wjt`Blog","short_name":"wjt","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/144.png","sizes":"144x144","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
+        <content type="html"><![CDATA[#web_bg {    /* 背景图像的地址（url括号里）  */    background: url(https://public.ysjf.com/creator/U52bejYG.jpg);    /* 背景图像不重复 */    background-repeat: no-repeat;    /* 背景图像大小 */    background-size: cover;  }  ]]></content>
       
     </entry>
     
