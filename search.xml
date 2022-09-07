@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>画师 DeadPrince</title>
+      <link href="/undefined/9e8f19f9.html"/>
+      <url>/undefined/9e8f19f9.html</url>
+      
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="/img/20220907 142521 画师 DeadPrince/0.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/1.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/2.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/3.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/4.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/5.jpg" alt=""><br><img src="/img/20220907 142521 画师 DeadPrince/6.jpg" alt=""></p>          </div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 插画 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二次元 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>随机视频</title>
       <link href="/undefined/7a71e863.html"/>
       <url>/undefined/7a71e863.html</url>
@@ -108,10 +133,10 @@
     
     <entry>
       <title></title>
-      <link href="/manifest.json"/>
-      <url>/manifest.json</url>
+      <link href="/css/133.css"/>
+      <url>/css/133.css</url>
       
-        <content type="html"><![CDATA[{"name":"wjt`Blog","short_name":"wjt","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/144.png","sizes":"144x144","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
+        <content type="html"><![CDATA[*{    margin: 0;    padding: 0;}body{    /* 100%窗口高度 */    height: 100vh;    /* 弹性布局 水平+垂直居中 */    display: flex;    justify-content: center;    align-items: center;    /* 径向渐变背景 */    background: radial-gradient(circle at top center,#718497,#29323c);}.container{    /* 弹性布局 默认水平排列 */    display: flex;    width: 90vw;    max-width: 900px;    height: 400px;    /* 溢出隐藏 */    overflow: hidden;}.item{    /* 相对定位 */    position: relative;    width: 60px;    margin: 10px;    cursor: pointer;    border-radius: 30px;    /* 保持原有尺寸比例，裁切长边 */    background-size: cover;    /* 定位背景图像为正中间 */    background-position: center;    /* 过渡效果：时长 贝塞尔曲线 */    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);    overflow: hidden;}.item .shadow{    position: absolute;    bottom: 0;    left: 0;    right: 0;    height: 100px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content{    display: flex;    position: absolute;    left: 10px;    right: 0;    bottom: 10px;    height: 40px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content .icon{    min-width: 40px;    width: 40px;    height: 40px;    border-radius: 50%;    background-color: #fff;    display: flex;    justify-content: center;    align-items: center;    font-size: 16px;}.item:nth-child(1) .fa{    color: #fc6e51;}.item:nth-child(2) .fa{    color: #ffce54;}.item:nth-child(3) .fa{    color: #2ecc71;}.item:nth-child(4) .fa{    color: #5d9cec;}.item:nth-child(5) .fa{    color: #ac92ec;}.item .content .text{    display: flex;    flex-direction: column;    justify-content: center;    margin-left: 10px;    color: #fff;    width: 100%;}.item .content .text div{    /* 超出显示省略号（需要设置width） */    width: calc(100% - 70px);    text-overflow: ellipsis;    overflow: hidden;    white-space: nowrap;    opacity: 0;    transition: opacity 0.5s ease-out;}.item .content .text .tit{    font-weight: bold;    font-size: 18px;}.item .content .text .sub{    /* 设置过渡效果延迟时间 */    transition-delay: 0.1s;}/* 选中态样式 */.item.active{    flex: 1;    margin: 0;    border-radius: 40px;}.item.active .shadow{    background: linear-gradient(to top,rgba(0,0,0,0.35) 65%,transparent);}.item.active .content{    bottom: 20px;    left: 20px;}.item.active .content .text div{    opacity: 1;}]]></content>
       
     </entry>
     
@@ -130,10 +155,10 @@
     
     <entry>
       <title></title>
-      <link href="/css/133.css"/>
-      <url>/css/133.css</url>
+      <link href="/manifest.json"/>
+      <url>/manifest.json</url>
       
-        <content type="html"><![CDATA[*{    margin: 0;    padding: 0;}body{    /* 100%窗口高度 */    height: 100vh;    /* 弹性布局 水平+垂直居中 */    display: flex;    justify-content: center;    align-items: center;    /* 径向渐变背景 */    background: radial-gradient(circle at top center,#718497,#29323c);}.container{    /* 弹性布局 默认水平排列 */    display: flex;    width: 90vw;    max-width: 900px;    height: 400px;    /* 溢出隐藏 */    overflow: hidden;}.item{    /* 相对定位 */    position: relative;    width: 60px;    margin: 10px;    cursor: pointer;    border-radius: 30px;    /* 保持原有尺寸比例，裁切长边 */    background-size: cover;    /* 定位背景图像为正中间 */    background-position: center;    /* 过渡效果：时长 贝塞尔曲线 */    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);    overflow: hidden;}.item .shadow{    position: absolute;    bottom: 0;    left: 0;    right: 0;    height: 100px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content{    display: flex;    position: absolute;    left: 10px;    right: 0;    bottom: 10px;    height: 40px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content .icon{    min-width: 40px;    width: 40px;    height: 40px;    border-radius: 50%;    background-color: #fff;    display: flex;    justify-content: center;    align-items: center;    font-size: 16px;}.item:nth-child(1) .fa{    color: #fc6e51;}.item:nth-child(2) .fa{    color: #ffce54;}.item:nth-child(3) .fa{    color: #2ecc71;}.item:nth-child(4) .fa{    color: #5d9cec;}.item:nth-child(5) .fa{    color: #ac92ec;}.item .content .text{    display: flex;    flex-direction: column;    justify-content: center;    margin-left: 10px;    color: #fff;    width: 100%;}.item .content .text div{    /* 超出显示省略号（需要设置width） */    width: calc(100% - 70px);    text-overflow: ellipsis;    overflow: hidden;    white-space: nowrap;    opacity: 0;    transition: opacity 0.5s ease-out;}.item .content .text .tit{    font-weight: bold;    font-size: 18px;}.item .content .text .sub{    /* 设置过渡效果延迟时间 */    transition-delay: 0.1s;}/* 选中态样式 */.item.active{    flex: 1;    margin: 0;    border-radius: 40px;}.item.active .shadow{    background: linear-gradient(to top,rgba(0,0,0,0.35) 65%,transparent);}.item.active .content{    bottom: 20px;    left: 20px;}.item.active .content .text div{    opacity: 1;}]]></content>
+        <content type="html"><![CDATA[{"name":"wjt`Blog","short_name":"wjt","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/144.png","sizes":"144x144","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
       
     </entry>
     
