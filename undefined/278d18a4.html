@@ -1,0 +1,596 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>逆向中补环境 | wjt's Blog</title><meta name="keywords" content="知识点补充"><meta name="author" content="wjt"><meta name="copyright" content="wjt"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="小tips你一定用得上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向中补环境">
+<meta property="og:url" content="https://my.wjtblog.online/undefined/278d18a4.html">
+<meta property="og:site_name" content="wjt&#39;s Blog">
+<meta property="og:description" content="小tips你一定用得上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://my.wjtblog.online/img/buhuanjing/0.jpg">
+<meta property="article:published_time" content="2022-09-13T06:26:00.000Z">
+<meta property="article:modified_time" content="2022-09-13T08:56:16.542Z">
+<meta property="article:author" content="wjt">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="知识点补充">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://my.wjtblog.online/img/buhuanjing/0.jpg"><link rel="shortcut icon" href="/img/512.png"><link rel="canonical" href="https://my.wjtblog.online/undefined/278d18a4"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '逆向中补环境',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-13 16:56:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.0.6/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="wjt's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/authorImg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/buhuanjing/0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">wjt's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">逆向中补环境</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-13T06:26:00.000Z" title="发表于 2022-09-13 14:26:00">2022-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-13T08:56:16.542Z" title="更新于 2022-09-13 16:56:16">2022-09-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%80%86%E5%90%91/">逆向</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%80%86%E5%90%91/%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/">知识点补充</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="逆向中补环境"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><span class='p center logo large'>补环境知识点补充</span>
+<h2 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h2><p>新的分类就从补环境开始吧，在这个专栏中会补充一些在逆向过程中会遇到的知识点<br>这些知识点应该要会而且必须要会</p>
+<h2 id="浏览器环境"><a href="#浏览器环境" class="headerlink" title="浏览器环境"></a>浏览器环境</h2><p>我们在逆向之中最省时间的方法就是找到入口函数，然后将参数打上去直接运行<br>这种方法省时也省力<br>但往往这时候就会遇到 xxx is not defined<br>这是因为我们运行在nodejs环境中与浏览器的环境还是有很大不同（以谷歌浏览器为例）</p>
+<p>1.全局下this的指向不同<br>浏览器下this指向window,nodejs中this指向global，所以window中封装的一些例如alert这些方法在nodejs中是无法使用的。</p>
+<p>2.使用的引擎不一样；<br>不同的浏览器使用的引擎都是有差别的（所以应用会出现各种兼容性差异），但是Nodejs是基于谷歌的V8引擎的，引擎一致不管什么环境都不存在兼容性的问题。</p>
+<p>3.javascript在浏览器中的主要作用是用来操作DOM的，而nodejs作为一门服务端的语言（类比PHP/JAVA），没有任务前台界面，所以不存在操作DOM。<br>也就是说两个使用起来的性质已经发生了变化，所以这方面来说基本没有可比性了。</p>
+<p>4.使用的模块标准不同，nodejs使用的是CommonJs的模块标准，而浏览器使用的是ES的模块标准<br>所以nodejs中使用的是require()导入模块；浏览器中js使用的是import的方式导入</p>
+<p>很多网站现在利用浏览器的特性来检测是否是机器操作<br>selenium等自动话操作手段固然能绕过这一检测但在面对高并发请求时就会显得心有余而力不足<br>所以补环境也是逆向这条路上很重要的知识点</p>
+<h2 id="常见的检测环境"><a href="#常见的检测环境" class="headerlink" title="常见的检测环境"></a>常见的检测环境</h2><p>windows、location、navigate、document、native、canvas等等<br>常见的就是直接运行然后看什么not defined直接补充就好了<br>比较简单的如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">var window = global;</span><br><span class="line">window.document = &#123;referrer: &quot;&quot;&#125;;</span><br><span class="line">window.location = &#123;</span><br><span class="line">    hash: &quot;&quot;,</span><br><span class="line">    host: &quot;&quot;,</span><br><span class="line">    hostname: &quot;&quot;,</span><br><span class="line">    href: &quot;&quot;,</span><br><span class="line">    origin: &quot;&quot;,</span><br><span class="line">    pathname: &quot;/&quot;,</span><br><span class="line">    port: &quot;&quot;,</span><br><span class="line">    protocol: &quot;https:&quot;,</span><br><span class="line">    search: &quot;&quot;</span><br><span class="line">&#125;;</span><br><span class="line">window.navigator = &#123;</span><br><span class="line">    appCodeName: &quot;Mozilla&quot;,</span><br><span class="line">    appName: &quot;Netscape&quot;,</span><br><span class="line">    appVersion: &quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36&quot;,</span><br><span class="line">    cookieEnabled: true,</span><br><span class="line">    deviceMemory: 8,</span><br><span class="line">    doNotTrack: null,</span><br><span class="line">    hardwareConcurrency: 4,</span><br><span class="line">    language: &quot;zh-CN&quot;,</span><br><span class="line">    languages: [&quot;zh-CN&quot;, &quot;zh&quot;],</span><br><span class="line">    maxTouchPoints: 0,</span><br><span class="line">    onLine: true,</span><br><span class="line">    platform: &quot;Win32&quot;,</span><br><span class="line">    product: &quot;Gecko&quot;,</span><br><span class="line">    productSub: &quot;20030107&quot;,</span><br><span class="line">    userAgent: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36&quot;,</span><br><span class="line">    vendor: &quot;Google Inc.&quot;,</span><br><span class="line">    vendorSub: &quot;&quot;,</span><br><span class="line">&#125;;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">但是这也不是万能的</span><br><span class="line">就拿navigator对象中的 platform: &quot;Win32&quot; 举例</span><br><span class="line">如果是我们自己构造的对象如</span><br><span class="line">```  </span><br><span class="line">window.navigator = &#123;</span><br><span class="line">    platform: &quot;Win32&quot;,</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">这样子构建它就不能够直接通过检测（知乎x-zse-96​时检测）</span><br><span class="line">那这就要引入原型链和对象的概念了</span><br><span class="line">我们可以利用getOwnPropertyDescriptor函数来比较他们之间的差异s</span><br><span class="line">getOwnPropertyDescriptor官方解释时s获取指定对象的自身属性描述符。自身属性描述符是指直接在对象上定义（而非从对象的原型继承）的描述符。</span><br><span class="line">有点难懂 不过没事</span><br><span class="line">我们通过谷歌浏览器的控制台输入以下代码</span><br><span class="line">```  </span><br><span class="line">var navigator1 = &#123;</span><br><span class="line">    platform :&quot;win32&quot;</span><br><span class="line">&#125;</span><br><span class="line">Object.getOwnPropertyDescriptor(navigator1,&quot;platform&quot;)</span><br><span class="line">```  </span><br><span class="line">再试试看原来是怎么定义的</span><br><span class="line">```  </span><br><span class="line">Object.getOwnPropertyDescriptor(navigator,&quot;platform&quot;)</span><br><span class="line">```  </span><br><span class="line">&#123;% image /img/buhuanjing/own.jpg %&#125;</span><br><span class="line">所以对于这样的代码检测，我们应该如何构造呢？</span><br><span class="line">```  </span><br><span class="line">var Navigator = function()&#123;&#125;;</span><br><span class="line">Navigator.prototype = &#123;&quot;platform&quot;: &quot;win32&quot;&#125;;</span><br><span class="line">navigator = new Navigator();</span><br><span class="line">Object.getOwnPropertyDescriptor(Navigator,&quot;platform&quot;)</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">&#123;% image /img/buhuanjing/ownresult.jpg %&#125;</span><br><span class="line">这样就可以通过上面的原型链检测了</span><br><span class="line"></span><br><span class="line">这里的​​platform​​​是​​Navigator​​​上的属性，在使用 new 实例化后，navigator.platform 取到的是继承自​​Navigator​​的属性值，而不是直接赋予该对象的属性，所以得到的结果和浏览器是一样的。</span><br><span class="line"></span><br><span class="line">官方的意思是</span><br><span class="line">在JS里，万物皆对象。方法（Function）是对象，方法的原型(Function.prototype)是对象。因此，它们都会具有对象共有的特点。即：对象具有属性_ _ proto _ _，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法。</span><br><span class="line"></span><br><span class="line">方法（Function）这个特殊的对象，除了和其他对象一样有上述_proto_属性之外，还有自己特有的属性——原型属性（prototype），这个属性是一个指针，指向一个对象，这个对象的用途就是包含所有实例共享的属性和方法（我们把这个对象叫做原型对象）。原型对象也有一个属性，叫做constructor，这个属性包含了一个指针，指回原构造函数。</span><br><span class="line"></span><br><span class="line">想要理解这个可能有点困难看下边这个图</span><br><span class="line">&#123;% image /img/buhuanjing/function.png %&#125;</span><br><span class="line">我们最后得出来这样的结论</span><br><span class="line">xxx.__proto__ == yyy.prototype</span><br><span class="line">即我们分析一个对象就要分析它​__proto__​​​以及属性是定义在自己的​​prototype上还是继承自上一级</span><br><span class="line"></span><br><span class="line">遇到这种的我们就可以Object.getOwnPropertyDescriptor()方法一个一个进行调试</span><br><span class="line"></span><br><span class="line">以下给出常见的方法代码</span><br><span class="line">```  </span><br><span class="line">document = &#123;</span><br><span class="line">    createElement:function(x)&#123;</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var _getXxx = &#123;</span><br><span class="line">    toString: function() &#123;</span><br><span class="line">        return &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">_getXxx.__proto__.getA = function getA(x) &#123;</span><br><span class="line">    return &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">给document补一些方法</span><br><span class="line">```  </span><br><span class="line">var document = &#123;</span><br><span class="line">    createEvent: function createEvent() &#123;&#125;,</span><br><span class="line">    addEventListener: function addEventListener(x) &#123;&#125;,</span><br><span class="line">    createElement: function createElement(x) &#123;</span><br><span class="line">        if(x===&quot;&quot;)&#123;&#125; else &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">```  </span><br><span class="line">给 getLX_method 对象增加方法</span><br><span class="line">```  </span><br><span class="line">var getLX_method = &#123;&#125;;</span><br><span class="line">getLX_method.__proto__.getExtension = function getExtension(x) &#123;</span><br><span class="line">    return &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">getLX_method.__proto__.getParameter = function getParameter(x) &#123;</span><br><span class="line">    return &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>补 canvas 的话，我们只需要看它调用的方法和返回的结果，然后去一次性绘制图片，取出base64值放到toDataURL()中即可。 </p>
+<pre><code>document = &#123;
+    createElement: function createElement(x) &#123;
+        return canvas
+    &#125;
+&#125;;
+
+canvas = &#123;
+    toDataURL: function toDataURL() &#123;
+        return &quot;data:image/png;base64,i.....ggg==&quot;
+    &#125;,
+    getContext: function getContext(x) &#123;
+        if (x === &quot;xxx&quot;) &#123;
+            return 
+        &#125; else &#123;
+            return CanvasContext 
+        &#125;
+    &#125;
+&#125;;
+
+CanvasContext = &#123;
+    arc: function arc() &#123;&#125;,
+    stroke: function stroke() &#123;&#125;,
+    fillText: function fillText() &#123;&#125;,
+    toString: function() &#123;
+        return &quot;[object]&quot;
+    &#125;
+&#125;;
+
+canvas[Symbol.toStringTag] = &quot;HTMLCanvasElement&quot;;
+</code></pre><p>针对浏览器指纹额外提一下</p>
+<p>浏览器指纹很重要，在数据采集、搜索引擎、埋点分析、网站测试等方面都有体现。</p>
+<p>指纹通常是指服务端的为了做识别而收集的客户端设备信息。即使没有cookie，指纹也可用于识别个人用户或设备。</p>
+<p>比如常用于记录的指纹 Header、Cookie、IP、DNS、UserAgent，Font（字体列表），Language，localStorage、Plugin（插件），Canvas（渲染绘图），WebGL（3D渲染图形），Web Vendor，Timezone（时区），WebRTC，ScreenResolution（分辨率），Platform（系统），Audio（音频设置和硬件特征指纹），以及enumerateDevices（其他媒体设备）、CPU、GPU信息等等。</p>
+<p>像用户代理、HTML元素属性、Dom对象操作等都属于基本指纹。 像图形渲染、音频指纹、硬件指纹这些属于高级指纹，生成或者模拟都有一定难度。 像浏览记录、访问频率等属于行为指纹，常用于恶意访问的判定，具体判定规则需要测试。</p>
+<p>当你浏览页面时，网站可以根据你的浏览器指纹进行跟踪，此外还有一些网站会根据指纹信息生成设备ID然后发送行为日志。 所以在你访问了一个网站后，它虽然没有cookie，但是有一个唯一的指纹，所以无论是推送广告还是行为检测都非常容易。</p>
+<p>重写String的查找方法</p>
+<pre><code>    var _indexOf = String.prototype.indexOf;
+    String.prototype.indexOf = function (searchValue, fromIndex) &#123;
+    if (searchValue == &#39;lx&#39;) &#123;
+        return-1;
+    &#125;
+        return _indexOf.apply(this, [searchValue, fromIndex]);
+    &#125;
+</code></pre><p>重写toString方法：</p>
+<pre><code>var newString = Function.prototype.toString;
+    Function.prototype.toString = function () &#123;
+        if (this == Window || this == Location || this == Function.prototype.toString) &#123;
+        return&quot;function Window() &#123; [native code] &#125;&quot;;
+    &#125;
+    return newString.apply(this);
+&#125;;
+</code></pre><p>还有就是可以使用proxy检测工具来看具体是定义在哪里的<br>proxy.js</p>
+<pre><code>let _window = &#123;
+
+&#125;;
+let _stringify = JSON.stringify;
+JSON.stringify = function (Object) &#123;
+    // ?? 的意思是，如果 ?? 左边的值是 null 或者 undefined，那么就返回右边的值。
+    if ((Object?.value ?? Object) === global) &#123;
+        return &quot;global&quot;;
+    &#125;
+    return _stringify(Object);
+&#125;;
+
+function getMethodHandler(WatchName) &#123;
+    let methodhandler = &#123;
+        apply(target, thisArg, argArray) &#123;
+            let result = Reflect.apply(target, thisArg, argArray);
+            console.log(`[$&#123;WatchName&#125;] apply function name is [$&#123;target.name&#125;], argArray is [$&#123;argArray&#125;], result is [$&#123;result&#125;].`);
+            return result;
+        &#125;,
+        construct(target, argArray, newTarget) &#123;
+            let result = Reflect.construct(target, argArray, newTarget);
+            console.log(`[$&#123;WatchName&#125;] construct function name is [$&#123;target.name&#125;], argArray is [$&#123;argArray&#125;], result is [$&#123;JSON.stringify(result)&#125;].`);
+            return result;
+        &#125;
+    &#125;;
+    return methodhandler;
+&#125;
+
+function getObjHandler(WatchName) &#123;
+    let handler = &#123;
+        get(target, propKey, receiver) &#123;
+            let result = Reflect.get(target, propKey, receiver);
+            if (result instanceof Object) &#123;
+                if (typeof result === &quot;function&quot;) &#123;
+                    console.log(`[$&#123;WatchName&#125;] getting propKey is [$&#123;propKey&#125;] , it is function`);
+                    //return new Proxy(result,getMethodHandler(WatchName))
+                &#125; else &#123;
+                    console.log(`[$&#123;WatchName&#125;] getting propKey is [$&#123;propKey&#125;], result is [$&#123;JSON.stringify(result)&#125;]`);
+                &#125;
+                return new Proxy(result, getObjHandler(`$&#123;WatchName&#125;.$&#123;propKey&#125;`));
+            &#125;
+            console.log(`[$&#123;WatchName&#125;] getting propKey is [$&#123;propKey&#125;], result is [$&#123;result&#125;]`);
+            return result;
+        &#125;,
+        set(target, propKey, value, receiver) &#123;
+            if (value instanceof Object) &#123;
+                console.log(`[$&#123;WatchName&#125;] setting propKey is [$&#123;propKey&#125;], value is [$&#123;JSON.stringify(value)&#125;]`);
+            &#125; else &#123;
+                console.log(`[$&#123;WatchName&#125;] setting propKey is [$&#123;propKey&#125;], value is [$&#123;value&#125;]`);
+            &#125;
+            return Reflect.set(target, propKey, value, receiver);
+        &#125;,
+        has(target, propKey) &#123;
+            let result = Reflect.has(target, propKey);
+            console.log(`[$&#123;WatchName&#125;] has propKey [$&#123;propKey&#125;], result is [$&#123;result&#125;]`);
+            return result;
+        &#125;,
+        deleteProperty(target, propKey) &#123;
+            let result = Reflect.deleteProperty(target, propKey);
+            console.log(`[$&#123;WatchName&#125;] delete propKey [$&#123;propKey&#125;], result is [$&#123;result&#125;]`);
+            return result;
+        &#125;,
+        getOwnPropertyDescriptor(target, propKey) &#123;
+            let result = Reflect.getOwnPropertyDescriptor(target, propKey);
+            console.log(`[$&#123;WatchName&#125;] getOwnPropertyDescriptor  propKey [$&#123;propKey&#125;] result is [$&#123;JSON.stringify(result)&#125;]`);
+            return result;
+        &#125;,
+        defineProperty(target, propKey, attributes) &#123;
+            let result = Reflect.defineProperty(target, propKey, attributes);
+            console.log(`[$&#123;WatchName&#125;] defineProperty propKey [$&#123;propKey&#125;] attributes is [$&#123;JSON.stringify(attributes)&#125;], result is [$&#123;result&#125;]`);
+            return result;
+        &#125;,
+        getPrototypeOf(target) &#123;
+            let result = Reflect.getPrototypeOf(target);
+            console.log(`[$&#123;WatchName&#125;] getPrototypeOf result is [$&#123;JSON.stringify(result)&#125;]`);
+            return result;
+        &#125;,
+        setPrototypeOf(target, proto) &#123;
+            console.log(`[$&#123;WatchName&#125;] setPrototypeOf proto is [$&#123;JSON.stringify(proto)&#125;]`);
+            return Reflect.setPrototypeOf(target, proto);
+        &#125;,
+        preventExtensions(target) &#123;
+            console.log(`[$&#123;WatchName&#125;] preventExtensions`);
+            return Reflect.preventExtensions(target);
+        &#125;,
+        isExtensible(target) &#123;
+            let result = Reflect.isExtensible(target);
+            console.log(`[$&#123;WatchName&#125;] isExtensible, result is [$&#123;result&#125;]`);
+            return result;
+        &#125;,
+        ownKeys(target) &#123;
+            let result = Reflect.ownKeys(target);
+            console.log(`[$&#123;WatchName&#125;] invoke ownKeys, result is [$&#123;JSON.stringify(result)&#125;]`);
+            return result;
+        &#125;,
+        apply(target, thisArg, argArray) &#123;
+            let result = Reflect.apply(target, thisArg, argArray);
+            console.log(`[$&#123;WatchName&#125;] apply function name is [$&#123;target.name&#125;], argArray is [$&#123;argArray&#125;], result is [$&#123;result&#125;].`);
+            return result;
+        &#125;,
+        construct(target, argArray, newTarget) &#123;
+            let result = Reflect.construct(target, argArray, newTarget);
+            console.log(`[$&#123;WatchName&#125;] construct function name is [$&#123;target.name&#125;], argArray is [$&#123;argArray&#125;], result is [$&#123;JSON.stringify(result)&#125;].`);
+            return result;
+        &#125;
+    &#125;;
+    return handler;
+&#125;
+_window = Object.assign(global, _window);
+const window = new Proxy(Object.create(_window), getObjHandler(&quot;window&quot;));
+module.exports = &#123;
+    window
+&#125;;
+</code></pre><p>要检测是直接使用</p>
+<pre><code>const &#123;window&#125; = require(&quot;./tools/proxy&quot;);
+</code></pre><p>对于补环境来说最需要的还是耐心 逆向到了这步已经解决了十之八九了剩下的就得看自己耐心补充</p>
+<p>当然也有捷径可以走比如说JSDOM对象</p>
+<pre><code>// const canvas = require(&#39;canvas&#39;);
+const jsdom = require(&quot;jsdom&quot;);
+const &#123;JSDOM&#125; = jsdom;
+const dom = new JSDOM(`&lt;!DOCTYPE html&gt;&lt;p&gt;Hello world&lt;/p&gt;`);
+window = dom.window;
+document = window.document;
+XMLHttpRequest = window.XMLHttpRequest;
+navigator = window.navigator;
+location = window.location;
+history = window.history
+Window = window.Window
+Navigator  = window.Navigator
+</code></pre><p>在对于环境检测比较不严格的情况下这个往往能够直接解决<br>但是并不能算很好的方法</p>
+<p>最后一种也可以说是通杀的方法就是直接selenium补充环境</p>
+<pre><code>import os
+from selenium import webdriver
+
+ua = &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64)...&#39;
+PRO_DIR = os.path.dirname(os.path.abspath(__file__))
+
+s1 = &quot;&quot;&quot;
+    &lt;!DOCTYPE html&gt;
+    &lt;html style=&quot;font-size: 50px;&quot;&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;  
+        &lt;title&gt;signature-hook&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    &quot;&quot;&quot;
+s2 = &quot;&quot;&quot;
+    &lt;/script&gt;
+    &lt;/html&gt;
+    &quot;&quot;&quot;
+
+def driver_sig(html_file):
+    option = webdriver.ChromeOptions()
+    option.add_argument(&#39;headless&#39;)
+    option.add_argument(&#39;--no-sandbox&#39;)
+    option.add_argument(&#39;--user-agent=&#123;&#125;&#39;.format(ua))
+    driver = webdriver.Chrome(chrome_options=option)
+    driver.get(&#39;file:///&#39;+ PRO_DIR + html_file)
+    sig = driver.title
+    driver.quit()
+    return sig
+
+sign_js = &#39;&#39;&#39;
+window.navigator = &#123;
+    userAgent: &#39;&#39;
+    &#125;;
+function get_sign() &#123;
+        ... //此处省略N行代码
+        return sign
+    &#125;
+var signature = get_sign();
+document.clear();
+document.write(signature);
+&#39;&#39;&#39;
+
+if __name__ == &#39;__main__&#39;:
+    doc = sign_js.replace(&quot;userAgent: &#39;&#39;&quot;,&quot;userAgent: &#39;&#123;&#125;&#39;&quot;.format(ua))
+    html_file = &#39;get_sign.html&#39;
+    with open(html_file, &#39;w&#39;, encoding=&#39;utf-8&#39;) as fw:
+        fw.write(s1 + doc + s2)
+    sig = driver_sig(html_file)
+    print(sig)
+</code></pre><p>在这种情况下基本可以秒杀市面上大多数的网站检测</p>
+<p>借用lx老师的话来总结有关js逆向补环境</p>
+<p>1、检测环境记心里，指纹信息重获取。</p>
+<p>2、dom操作记一记，Jsdom多练习。</p>
+<p>3、不可变对象记得Object.freeze()</p>
+<p>4、多用debugger巧用proxy</p>
+<p>5、内置方法防重写</p>
+<p>6、形成框架方便二次修改</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://my.wjtblog.online">wjt</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://my.wjtblog.online/undefined/278d18a4.html">https://my.wjtblog.online/undefined/278d18a4.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://my.wjtblog.online" target="_blank">wjt's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF/">技术</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/">知识点补充</a></div><div class="post_share"><div class="social-share" data-image="/img/buhuanjing/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/undefined/78b5d518.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220912%20084949%20%E7%94%BB%E5%B8%88%20%E9%B1%BC%E5%8D%83%E4%BC%9A%E7%94%BB%E7%94%BB/0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">画师 鱼千会画画</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/undefined/c0285f80.html" title="某猫去水印小程序逆向"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/miniprogram/8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-09</div><div class="title">某猫去水印小程序逆向</div></div></a></div><div><a href="/undefined/fbf31d6e.html" title="web抖音参数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/douyin/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">web抖音参数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/authorImg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wjt</div><div class="author-info__description">世间因少年挺身向前，而更加瑰丽</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/minmin0516"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">小王永远爱老刘哦</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="toc-number">1.</span> <span class="toc-text">开始之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">浏览器环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A3%80%E6%B5%8B%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">常见的检测环境</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/undefined/278d18a4.html" title="逆向中补环境"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/buhuanjing/0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向中补环境"/></a><div class="content"><a class="title" href="/undefined/278d18a4.html" title="逆向中补环境">逆向中补环境</a><time datetime="2022-09-13T06:26:00.000Z" title="发表于 2022-09-13 14:26:00">2022-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/78b5d518.html" title="画师 鱼千会画画"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220912%20084949%20%E7%94%BB%E5%B8%88%20%E9%B1%BC%E5%8D%83%E4%BC%9A%E7%94%BB%E7%94%BB/0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="画师 鱼千会画画"/></a><div class="content"><a class="title" href="/undefined/78b5d518.html" title="画师 鱼千会画画">画师 鱼千会画画</a><time datetime="2022-09-12T00:50:09.000Z" title="发表于 2022-09-12 08:50:09">2022-09-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/dfa7a566.html" title="遇见不一样的风景"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220911%20081818%20%E9%81%87%E8%A7%81%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E9%A3%8E%E6%99%AF/0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="遇见不一样的风景"/></a><div class="content"><a class="title" href="/undefined/dfa7a566.html" title="遇见不一样的风景">遇见不一样的风景</a><time datetime="2022-09-11T00:18:28.000Z" title="发表于 2022-09-11 08:18:28">2022-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/52ed70a5.html" title="中秋节 教师节快乐！"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220910%20093100%20%E4%B8%AD%E7%A7%8B%E8%8A%82%20%E6%95%99%E5%B8%88%E8%8A%82%E5%BF%AB%E4%B9%90%EF%BC%81/0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中秋节 教师节快乐！"/></a><div class="content"><a class="title" href="/undefined/52ed70a5.html" title="中秋节 教师节快乐！">中秋节 教师节快乐！</a><time datetime="2022-09-10T01:31:08.000Z" title="发表于 2022-09-10 09:31:08">2022-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/c0285f80.html" title="某猫去水印小程序逆向"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/miniprogram/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某猫去水印小程序逆向"/></a><div class="content"><a class="title" href="/undefined/c0285f80.html" title="某猫去水印小程序逆向">某猫去水印小程序逆向</a><time datetime="2022-09-09T05:46:00.000Z" title="发表于 2022-09-09 13:46:00">2022-09-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By wjt</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="7622344659" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨ 有新文章啦！ 👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/biya/0.jpg);"> <a class="categoryBar-list-link" href="categories/逆向/">逆向</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">不定期更新各个画师的插画哦~</span></li><li class="categoryBar-list-item" style="background:url(/img/biya/1.jpg);"> <a class="categoryBar-list-link" href="categories/插画/">插画</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">逆向学的好 牢饭吃得饱</span></li><li class="categoryBar-list-item" style="background:url(https://assets.akilar.top/image/cover3.webp);"> <a class="categoryBar-list-link" href="categories/逆向/知识点补充/">知识点补充</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">长篇小说连载</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.0.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '833d226a2cf24e0c94c66fac095c24b8';
+  var gaud_map_key = '20a5f1cc28f198c81d9a3145035a0dd0';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.0.6/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/runtime/runtime.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/9e8f19f9.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220907 142521 画师 DeadPrince/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-07</span><a class="blog-slider__title" href="undefined/9e8f19f9.html" alt="">画师 DeadPrince</a><div class="blog-slider__text">爆裂双重美感 甜酷辣妹的二次元</div><a class="blog-slider__button" href="undefined/9e8f19f9.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/dfa7a566.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220911 081818 遇见不一样的风景/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-11</span><a class="blog-slider__title" href="undefined/dfa7a566.html" alt="">遇见不一样的风景</a><div class="blog-slider__text">愿美好的瞬间都有人分享</div><a class="blog-slider__button" href="undefined/dfa7a566.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/78b5d518.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220912 084949 画师 鱼千会画画/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-12</span><a class="blog-slider__title" href="undefined/78b5d518.html" alt="">画师 鱼千会画画</a><div class="blog-slider__text">他们说这里曾有一对恋人</div><a class="blog-slider__button" href="undefined/78b5d518.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/3be073bc.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220909 114150 啊帐的画廊/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-09</span><a class="blog-slider__title" href="undefined/3be073bc.html" alt="">啊帐的画廊</a><div class="blog-slider__text">祝大伙中秋节快乐呀</div><a class="blog-slider__button" href="undefined/3be073bc.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/daf3f053.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220906 110503 原神 torino/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-06</span><a class="blog-slider__title" href="undefined/daf3f053.html" alt="">原神 torino</a><div class="blog-slider__text">原来你也玩原神</div><a class="blog-slider__button" href="undefined/daf3f053.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/d87f7e0c.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/biya/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-05</span><a class="blog-slider__title" href="undefined/d87f7e0c.html" alt="">biya~</a><div class="blog-slider__text">biya小姐姐看了都说好</div><a class="blog-slider__button" href="undefined/d87f7e0c.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/4ad61758.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220908 193857 ai画作 Mews/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-08</span><a class="blog-slider__title" href="undefined/4ad61758.html" alt="">ai画作 Mews.</a><div class="blog-slider__text">今天是治愈系ai画作哦~</div><a class="blog-slider__button" href="undefined/4ad61758.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/fbf31d6e.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/douyin/1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-05</span><a class="blog-slider__title" href="undefined/fbf31d6e.html" alt="">web抖音参数</a><div class="blog-slider__text">外边小姐姐好看，里边更好看</div><a class="blog-slider__button" href="undefined/fbf31d6e.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/52ed70a5.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/20220910 093100 中秋节 教师节快乐！/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-10</span><a class="blog-slider__title" href="undefined/52ed70a5.html" alt="">中秋节 教师节快乐！</a><div class="blog-slider__text">今天放下手中的码陪陪家人呦</div><a class="blog-slider__button" href="undefined/52ed70a5.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/c0285f80.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/miniprogram/8.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-09</span><a class="blog-slider__title" href="undefined/c0285f80.html" alt="">某猫去水印小程序逆向</a><div class="blog-slider__text">小程序！小程序！小程序！</div><a class="blog-slider__button" href="undefined/c0285f80.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="undefined/278d18a4.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/buhuanjing/0.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-09-13</span><a class="blog-slider__title" href="undefined/278d18a4.html" alt="">逆向中补环境</a><div class="blog-slider__text">小tips你一定用得上</div><a class="blog-slider__button" href="undefined/278d18a4.html" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax src="https://cdn.cbd.int/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://github.anzhiy.cn/api?minmin0516",['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'],'minmin0516')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
