@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://my.wjtblog.online/undefined/278d18a4.html</loc>
+    
+    <lastmod>2022-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://my.wjtblog.online/undefined/29dc1e17.html</loc>
     
     <lastmod>2022-09-14</lastmod>
@@ -83,15 +92,6 @@
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/undefined/278d18a4.html</loc>
-    
-    <lastmod>2022-09-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://my.wjtblog.online/undefined/c0285f80.html</loc>
     
     <lastmod>2022-09-09</lastmod>
@@ -135,7 +135,7 @@
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/tags/%E5%8E%9F%E7%A5%9E/</loc>
+    <loc>https://my.wjtblog.online/tags/biya/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -149,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/tags/biya/</loc>
+    <loc>https://my.wjtblog.online/tags/%E7%BE%8E%E5%A5%B3/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/tags/%E7%BE%8E%E5%A5%B3/</loc>
+    <loc>https://my.wjtblog.online/tags/%E5%8E%9F%E7%A5%9E/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -193,14 +193,14 @@
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/</loc>
+    <loc>https://my.wjtblog.online/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/</loc>
+    <loc>https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/</loc>
     <lastmod>2022-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
