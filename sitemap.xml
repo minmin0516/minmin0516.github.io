@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://my.wjtblog.online/undefined/c33553d0.html</loc>
+    
+    <lastmod>2023-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://my.wjtblog.online/undefined/bf0029ab.html</loc>
     
     <lastmod>2023-02-16</lastmod>
@@ -182,6 +191,13 @@
 
   
   <url>
+    <loc>https://my.wjtblog.online/tags/%E6%8F%92%E7%94%BB/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://my.wjtblog.online/tags/biya/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -197,13 +213,6 @@
   
   <url>
     <loc>https://my.wjtblog.online/tags/%E7%BE%8E%E5%A5%B3/</loc>
-    <lastmod>2023-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://my.wjtblog.online/tags/%E6%8F%92%E7%94%BB/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
