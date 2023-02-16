@@ -6,7 +6,7 @@
   <link href="https://my.wjtblog.online/atom.xml" rel="self"/>
   
   <link href="https://my.wjtblog.online/"/>
-  <updated>2022-09-16T08:02:30.643Z</updated>
+  <updated>2023-02-16T01:37:16.805Z</updated>
   <id>https://my.wjtblog.online/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快手滑动验证码</title>
+    <link href="https://my.wjtblog.online/undefined/a4a76f26.html"/>
+    <id>https://my.wjtblog.online/undefined/a4a76f26.html</id>
+    <published>2022-10-13T06:26:00.000Z</published>
+    <updated>2023-02-16T01:37:16.805Z</updated>
+    
+    <content type="html"><![CDATA[<span class='p center logo large'>快手滑动验证码</span><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>快手滑动验证码更新之后新增了KsecrectApiVerify这个接口验证，验证正确之后页面会进行刷新<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/KsecrectApiVerify.png"/></div></div></p><p>network清空请求后进行验证<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/network.png"/></div></div></p><p>发现会出现两种结果<br>失败：<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/fail.png"/></div></div></p><p>成功：<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/success.png"/></div></div></p><h2 id="参数分析"><a href="#参数分析" class="headerlink" title="参数分析"></a>参数分析</h2><p>查看一下post参数 JSON格式的加密参数<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/params.png"/></div></div></p><p>verifyParam这个命名一看就是某个参数进行加密的 看看堆栈是啥样的<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/duizhan.png"/></div></div></p><p>经过缓慢的调试最后定位到这个方法中<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/dingwei.png"/></div></div></p><p>控制台打印一下方法<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/fangfa.png"/></div></div><br>发现与最后请求的参数一致 这个方法就是生成加密的方法</p><p>分析一下这里面具体都是什么参数<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/canshu1.png"/></div></div><br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/canshu2.png"/></div></div>v</p><p>这个r参数里面就代表着验证码的各种信息 包括验证码id 验证码以及滑块的长宽高 以及最重要的trajectory即滑动轨迹等等<br>接着往下看方法<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/canshu3.png"/></div></div><br>拼接字符串获得a<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/canshu4.png"/></div></div><br>再通过a生成数组<br>最后再通过这个数组经过Promise函数放进去一个DES加密生成最后的参数<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/promise.png"/></div></div></p><p>流程到这里就走通了</p><h2 id="参数还原"><a href="#参数还原" class="headerlink" title="参数还原"></a>参数还原</h2><p>首先是r中包含的验证码信息</p><p>经过network搜索可以看到发送的验证码请求<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/yanzhengma.png"/></div></div><br>这个就很清楚了，这个请求返回了验证码的各种信息，包括图片地址和滑块地址<br>经多次测试r中的bgPicHeight、bgPicWidth、cutPicWidth、cutPicHeight参数代表着验证码的大小信息且不变，disY指的是滑块的高度但是其实根据返回的信息进行切割比缩放也可以得到值（切割比缩放: bgPicWidth/原bgPicWidth*disY）<br>另captchaExtraParam为浏览器信息、gpuInfo为设备信息<br>这些都可为定值<br>我们重点关注captchaSn、relativeX、trajectory这三个参数<br>captchaSn：此二维码的唯一标识,图片验证码url中有带这个参数<br>relativeX ：滑动的距离，图片识别之后也进行缩放即可<br>trajectory :滑动轨迹（X坐标|Y坐标|时间（由0开始））这个平滑的不行，X跟Y都得是有抖动才能通过验证</p><p>其中最麻烦的就是trajectory滑动轨迹<br>需要有人工抖动才能通过，即使是人手有时候也会有错误返回<br>为了节省时间，作者将所有可能的验证码识别出来的距离都进行了记录，下一次识别出来的时候直接调用就好了 有兴趣的可以试试用算法写出来</p><p>Promise函数生成<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/kuaishou/hanshu.png"/></div></div><br>直接上代码</p><pre><code>function get_sign(a) &#123;        var utf8arry = new TextEncoder().encode(a);        window.Jose.realm.global.$encrypt(utf8arry, &quot;c7b645db-65e8-401f-b38c-4c07c5fff247&quot;, &#123;            &quot;err&quot;: function() &#123;                debugger            &#125;,            &quot;suc&quot;: function(arg) &#123;                window.result = arg;                console.log(&quot;这是结果&quot;, arg);                return arg            &#125;        &#125;);        return window.result    &#125;</code></pre><p>剩下就是补环境调用了 就不过多赘述了</p>]]></content>
+    
+    
+    <summary type="html">验证码很烦人呢 想想办法</summary>
+    
+    
+    
+    <category term="逆向" scheme="https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/"/>
+    
+    
+    <category term="技术" scheme="https://my.wjtblog.online/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="逆向" scheme="https://my.wjtblog.online/tags/%E9%80%86%E5%90%91/"/>
+    
+  </entry>
   
   <entry>
     <title>加密参数的定位方式</title>
