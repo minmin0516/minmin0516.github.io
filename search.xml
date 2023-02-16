@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>利用机器学习识别验证码 -基础篇</title>
+      <link href="/undefined/830c0482.html"/>
+      <url>/undefined/830c0482.html</url>
+      
+        <content type="html"><![CDATA[<span class='p center logo large'>利用机器学习识别验证码 -基础篇</span><h2 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h2><p>近几年来机器学习这个概念一直很火，那究竟什么是机器学习呢<br>机器学习（Machine Learning，ML）是一门多领域交叉的学科，它涉及概率论、统计学、逼近论、凸分析、算法复杂度理论等多门学科。机器学习研究计算机怎样模拟或实现人类的学习行为，以获取新的知识或技能，重新组织已有的知识结构使之不断改善自身的性能。机器学习是人工智能的一个重要分支，是使计算机具有智能的根本途径，其应用遍及人工智能的各个领域。<br>机器学习可以分为 有监督学习、无监督学习、半监督学习、其他学习方法<br>学习方法又可以分为回归分析、分类（决策树、支持向量机、神经网络）、聚类（K-means）、降维、特征抽取等等</p><p>说到这里是不是感觉机器学习非常复杂<br>机器学习是一个非常大的领域<br>从某种角度上来讲永远没有办法讲完，但是并不影响我们使用<br>本文中机器学习识别验证码的思路是：通过计算机对大量的数据以及标签进行学习训练，通过对错，使得计算机形成各种不同的分类器，通过这个分类器去匹配各个值，最后识别出验证码</p><h2 id="生成验证码"><a href="#生成验证码" class="headerlink" title="生成验证码"></a>生成验证码</h2><p>第一步就是得有庞大的训练样本，包含非常多的训练数据，本文使用PIL库生成验证码</p><pre><code>import random,osfrom PIL import ImageFont,Image,ImageDraw,ImageFilterdef auth_code():    size = (140,40)                             #图片大小    font_list = list(&quot;0123456789&quot;)             #验证码范围    c_chars = &quot;  &quot;.join(random.sample(font_list,4))  # 4个+中间加个俩空格    print(c_chars)    img = Image.new(&quot;RGB&quot;,size,(33,33,34))      #RGB颜色    draw = ImageDraw.Draw(img)                  #draw一个    font = ImageFont.truetype(&quot;arial.ttf&quot;, 23)      #字体    draw.text((5,4),c_chars,font=font,fill=&quot;white&quot;) #字颜色    params = [1 - float(random.randint(1, 2)) / 100,              0,              0,              0,              1 - float(random.randint(1, 10)) / 100,              float(random.randint(1, 2)) / 500,              0.001,              float(random.randint(1, 2)) / 500              ]    img = img.transform(size, Image.PERSPECTIVE, params)    img = img.filter(ImageFilter.EDGE_ENHANCE_MORE)    img.save(f&#39;./test_img/&#123;c_chars&#125;.png&#39;)if __name__ == &#39;__main__&#39;:    if not os.path.exists(&#39;./test_img&#39;):        os.mkdir(&#39;./test_img&#39;)    while True:        auth_code()        if len(os.listdir(&#39;./test_img&#39;))&gt;=10000:            break</code></pre><p>最终生成的训练集如下图所示<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/jiqixuexi/yanzhengma.PNG"/></div></div></p><h2 id="验证码分割"><a href="#验证码分割" class="headerlink" title="验证码分割"></a>验证码分割</h2><p>第二步就是将四位验证码分别进行分割分类，然后根据名称不同，放进0-9的文件加中，进行分类</p><pre><code>import osfrom PIL import Imagefrom sklearn.externals import joblibimport timedef read_img():    img_array = []    img_lable = []    file_list = os.listdir(&#39;./test_img&#39;)    for file in file_list:        try:            image = file            img_array.append(image)        except:            print(f&#39;&#123;file&#125;:图像已损坏&#39;)            os.remove(&#39;./test_img/&#39;+file)    return img_arraydef sliceImg(img_path, count = 4):    if not os.path.exists(&#39;train_data_img&#39;):        os.mkdir(&#39;train_data_img&#39;)    for i in range(10):        if not os.path.exists(f&#39;train_data_img/&#123;i&#125;&#39;):            os.mkdir(f&#39;train_data_img/&#123;i&#125;&#39;)    img = Image.open(&#39;./test_img/&#39;+img_path)    w, h = img.size    eachWidth = int((w - 17) / count)    img_path = img_path.replace(&#39; &#39;, &#39;&#39;).split(&#39;.&#39;)[0]    for i in range(count):        box = (i * eachWidth, 0, (i + 1) * eachWidth, h)        img.crop(box).save(f&#39;./train_data_img/&#123;img_path[i]&#125;/&#39;+img_path[i]+ str(time.time()) + &quot;.png&quot;)if __name__ == &#39;__main__&#39;:    img_array = read_img()    for i in img_array:        print(i)        sliceImg(i)</code></pre><h2 id="验证码特征提取"><a href="#验证码特征提取" class="headerlink" title="验证码特征提取"></a>验证码特征提取</h2><p>利用 numpy 先把 train_data_img 图片转换成向量</p><pre><code>from PIL import Imageimport numpy as npimport osfrom sklearn.neighbors import KNeighborsClassifier as knndef img2vec(fname):    &#39;&#39;&#39;将图片转为向量&#39;&#39;&#39;    im = Image.open(fname).convert(&#39;L&#39;)    im = im.resize((30,30))    tmp = np.array(im)    vec = tmp.ravel()    return vec</code></pre><p>利用之前打好的标签做一个特征提取</p><pre><code>tarin_img_path = &#39;train_data_img&#39;def split_data(paths):    X = []    y = []    for i in os.listdir(tarin_img_path):        path = os.path.join(tarin_img_path, i)        fn_list = os.listdir(path)        for name in fn_list:            y.append(name[0])            X.append(img2vec(os.path.join(path,name)))    return X, y                 # x向量   y标签</code></pre><p>紧接着构建一个分类器 使用的是knn的模型</p><pre><code>def knn_clf(X_train,label):    &#39;&#39;&#39;构建分类器&#39;&#39;&#39;    clf = knn()    clf.fit(X_train,label)    return clf</code></pre><p>构建完分类器后，就可以把上面的结合起来，做一个识别模型了。</p><pre><code>def knn_shib(test_img):    X_train,y_label = split_data(tarin_img_path)    clf = knn_clf(X_train,y_label)    result = clf.predict([img2vec(test_img)])    return result</code></pre><h2 id="knn介绍"><a href="#knn介绍" class="headerlink" title="knn介绍"></a>knn介绍</h2><p>knn算法又叫knn最近邻分类算法<br>邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是机器学习分类技术中最简单的方法之一。<br>所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。<br>它属于监督学习中的惰性学习 Memory-based learning 意思为不需要前期训练，只需要再训练的时候将结果保存在内存中进行分类即可</p><p>算法实现：<br>1、计算出每一个样本点与测试点的距离<br>2、选取距离最近的K个样本，并获取他们的标签 label<br>3、然后找出K个样本中数量最多的标签，返回该标签<br>KNN的本质是基于一种数据统计的方法。</p><p><a href="https://github.com/lixi5338619/KNN_Distinguish/tree/master">具体的可以看lx老师的文章</a></p><h2 id="验证码识别"><a href="#验证码识别" class="headerlink" title="验证码识别"></a>验证码识别</h2><p>测试集图片保存在 test_data_img 中，但是现在的图片是完整的，我们想要识别，就要按照之前的方法先进行图片切割，分成4份，然后拿我们的模型来识别。</p><pre><code>def sliceImg(img_path, count = 4):    if not os.path.exists(&#39;test_split_img&#39;):        os.mkdir(&#39;test_split_img&#39;)    img = Image.open(img_path)    w, h = img.size    eachWidth = int((w - 17) / count)    for i in range(count):        box = (i * eachWidth, 0, (i + 1) * eachWidth, h)        img.crop(box).save(&#39;./test_split_img/&#39; + f&quot;&#123;i+1&#125;.png&quot;)if __name__ == &#39;__main__&#39;:    test_data_img = r&#39;test_data_img\.059682.png&#39;    sliceImg(test_data_img)    result = []    for img in os.listdir(&#39;test_split_img&#39;):        result.append(knn_shib(&#39;test_split_img/&#39;+img)[0])    print(result)</code></pre><p>走到这里之后就可以说结束了，但是这个只能说是最简单的应用，实际的生产过程中，由于他是惰性学习，不适合运用在打码平台上，之后还会介绍更适合于现代验证码的机器学习过程</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 知识点补充 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> 知识点补充 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>抖音 __ac_nonce __signature</title>
       <link href="/undefined/c33553d0.html"/>
       <url>/undefined/c33553d0.html</url>
@@ -22,9 +49,9 @@
             
             <tag> 技术 </tag>
             
-            <tag> 逆向 </tag>
-            
             <tag> 知识点补充 </tag>
+            
+            <tag> 逆向 </tag>
             
         </tags>
       
@@ -51,9 +78,9 @@
             
             <tag> 技术 </tag>
             
-            <tag> 逆向 </tag>
-            
             <tag> 知识点补充 </tag>
+            
+            <tag> 逆向 </tag>
             
         </tags>
       
@@ -161,9 +188,9 @@
             
             <tag> 技术 </tag>
             
-            <tag> 逆向 </tag>
-            
             <tag> 知识点补充 </tag>
+            
+            <tag> 逆向 </tag>
             
         </tags>
       
@@ -190,9 +217,9 @@
             
             <tag> 技术 </tag>
             
-            <tag> 逆向 </tag>
-            
             <tag> 知识点补充 </tag>
+            
+            <tag> 逆向 </tag>
             
         </tags>
       
@@ -244,9 +271,9 @@
             
             <tag> 技术 </tag>
             
-            <tag> 逆向 </tag>
-            
             <tag> 知识点补充 </tag>
+            
+            <tag> 逆向 </tag>
             
         </tags>
       
@@ -515,28 +542,6 @@
     
     <entry>
       <title></title>
-      <link href="/css/background.css"/>
-      <url>/css/background.css</url>
-      
-        <content type="html"><![CDATA[#web_bg {    /* 背景图像的地址（url括号里）  */    background: url(https://public.ysjf.com/creator/U52bejYG.jpg);    /* 背景图像不重复 */    background-repeat: no-repeat;    /* 背景图像大小 */    background-size: cover;  }  ]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/runtime/runtime.js"/>
-      <url>/runtime/runtime.js</url>
-      
-        <content type="html"><![CDATA[var now = new Date; function createtime() { var t = new Date("09/02/2022 00:00:00"); now.setTime(now.getTime() + 250); var e = (now - t) / 1e3 / 60 / 60 / 24, a = Math.floor(e), n = (now - t) / 1e3 / 60 / 60 - 24 * a, r = Math.floor(n); 1 == String(r).length && (r = "0" + r); var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r, i = Math.floor(s); 1 == String(i).length && (i = "0" + i); var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i, l = Math.round(o); 1 == String(l).length && (l = "0" + l); let g = ""; g = r < 18 && r >= 9 ? `<span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>` : `<span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = g) } setInterval((() => { createtime() }), 250);]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/manifest.json"/>
       <url>/manifest.json</url>
       
@@ -552,6 +557,28 @@
       <url>/css/133.css</url>
       
         <content type="html"><![CDATA[*{    margin: 0;    padding: 0;}body{    /* 100%窗口高度 */    height: 100vh;    /* 弹性布局 水平+垂直居中 */    display: flex;    justify-content: center;    align-items: center;    /* 径向渐变背景 */    background: radial-gradient(circle at top center,#718497,#29323c);}.container{    /* 弹性布局 默认水平排列 */    display: flex;    width: 90vw;    max-width: 900px;    height: 400px;    /* 溢出隐藏 */    overflow: hidden;}.item{    /* 相对定位 */    position: relative;    width: 60px;    margin: 10px;    cursor: pointer;    border-radius: 30px;    /* 保持原有尺寸比例，裁切长边 */    background-size: cover;    /* 定位背景图像为正中间 */    background-position: center;    /* 过渡效果：时长 贝塞尔曲线 */    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);    overflow: hidden;}.item .shadow{    position: absolute;    bottom: 0;    left: 0;    right: 0;    height: 100px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content{    display: flex;    position: absolute;    left: 10px;    right: 0;    bottom: 10px;    height: 40px;    transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);}.item .content .icon{    min-width: 40px;    width: 40px;    height: 40px;    border-radius: 50%;    background-color: #fff;    display: flex;    justify-content: center;    align-items: center;    font-size: 16px;}.item:nth-child(1) .fa{    color: #fc6e51;}.item:nth-child(2) .fa{    color: #ffce54;}.item:nth-child(3) .fa{    color: #2ecc71;}.item:nth-child(4) .fa{    color: #5d9cec;}.item:nth-child(5) .fa{    color: #ac92ec;}.item .content .text{    display: flex;    flex-direction: column;    justify-content: center;    margin-left: 10px;    color: #fff;    width: 100%;}.item .content .text div{    /* 超出显示省略号（需要设置width） */    width: calc(100% - 70px);    text-overflow: ellipsis;    overflow: hidden;    white-space: nowrap;    opacity: 0;    transition: opacity 0.5s ease-out;}.item .content .text .tit{    font-weight: bold;    font-size: 18px;}.item .content .text .sub{    /* 设置过渡效果延迟时间 */    transition-delay: 0.1s;}/* 选中态样式 */.item.active{    flex: 1;    margin: 0;    border-radius: 40px;}.item.active .shadow{    background: linear-gradient(to top,rgba(0,0,0,0.35) 65%,transparent);}.item.active .content{    bottom: 20px;    left: 20px;}.item.active .content .text div{    opacity: 1;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/background.css"/>
+      <url>/css/background.css</url>
+      
+        <content type="html"><![CDATA[#web_bg {    /* 背景图像的地址（url括号里）  */    background: url(https://public.ysjf.com/creator/U52bejYG.jpg);    /* 背景图像不重复 */    background-repeat: no-repeat;    /* 背景图像大小 */    background-size: cover;  }  ]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/runtime/runtime.js"/>
+      <url>/runtime/runtime.js</url>
+      
+        <content type="html"><![CDATA[var now = new Date; function createtime() { var t = new Date("09/02/2022 00:00:00"); now.setTime(now.getTime() + 250); var e = (now - t) / 1e3 / 60 / 60 / 24, a = Math.floor(e), n = (now - t) / 1e3 / 60 / 60 - 24 * a, r = Math.floor(n); 1 == String(r).length && (r = "0" + r); var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r, i = Math.floor(s); 1 == String(i).length && (i = "0" + i); var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i, l = Math.round(o); 1 == String(l).length && (l = "0" + l); let g = ""; g = r < 18 && r >= 9 ? `<span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>` : `<span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = g) } setInterval((() => { createtime() }), 250);]]></content>
       
     </entry>
     
