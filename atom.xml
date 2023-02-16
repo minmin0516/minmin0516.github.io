@@ -6,7 +6,7 @@
   <link href="https://my.wjtblog.online/atom.xml" rel="self"/>
   
   <link href="https://my.wjtblog.online/"/>
-  <updated>2023-02-16T03:28:59.661Z</updated>
+  <updated>2023-02-16T03:39:58.952Z</updated>
   <id>https://my.wjtblog.online/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://my.wjtblog.online/undefined/bf0029ab.html"/>
     <id>https://my.wjtblog.online/undefined/bf0029ab.html</id>
     <published>2022-11-03T11:43:00.000Z</published>
-    <updated>2023-02-16T03:28:59.661Z</updated>
+    <updated>2023-02-16T03:39:58.952Z</updated>
     
     <content type="html"><![CDATA[<span class='p center logo large'>美团 mtgsig</span><h2 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h2><p>上一篇文章中我们具体分析了mtgsig参数是怎么生成的但是过程非常麻烦<br>遇到这种复杂的加密 为了节省时间一般选择看如何进行调用<br>除了传统的补环境之外今天介绍另一种没扣的调用方式</p><h2 id="playwright简介"><a href="#playwright简介" class="headerlink" title="playwright简介"></a>playwright简介</h2><p>playwright是python中的第三方库,跟selenium一样，Playwright是微软开源的一个UI自动化测试工具。添加了默认等待时间增加脚本稳定性，并提供视频录制、网络请求支持、自定义的定位器、自带调试器等新特性。<br>但其中的一些特性使得我们可以劫持、替换js，并进行修改调用</p><h2 id="playwright美团实战"><a href="#playwright美团实战" class="headerlink" title="playwright美团实战"></a>playwright美团实战</h2><p>这次我们直接定位到生成函数（美团中的js方法会定期的改变名字但是我们来说方法都是一样调用的）<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/meishi/ds.png"/></div></div><br>可以看到我们定义了windows对象中一个自定义的方法<br>我们可以打开playwright看看效果，其中我们可以定义 context.chromium.launch()中<br>headless=False 来打开网页</p><pre><code>def startServer(base_url):    context = sync_playwright().start()    browser = context.chromium.launch()    page = browser.new_page()    page.route(        &quot;https://s3plus.meituan.net/v1/mss_e6aa2b2c35b3432988a7a61f7ed79d37/h5guard/H5guard.js&quot;,        lambda route: route.fulfill(path=&quot;./js/meishiChunk.js&quot;)    )    page.goto(base_url)    return page</code></pre><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/meishi/myds.png"/></div></div><p>可以看到我们定义的对象已经成功的打印出来了<br>所以我们就可以利用这种方法去做一些操作</p><pre><code>def getGy(page,getGyJs):    result = page.evaluate(        &#39;&#39;&#39;        () =&gt;&#123;            return window.myDs(%s)        &#125;         &#39;&#39;&#39;%(getGyJs)    )    return result</code></pre><p>用这种方法来获取数据，且在调试过程中发现offset、cookie中的cityId等等均会影响数据的获取<br>最终方案做成接口的形式，对offset、cookie进行加密处理</p><pre><code>def getMtgsig(page,data,myHy):    result = page.evaluate(        &#39;&#39;&#39;        () =&gt;&#123;            return wjt(%s,%s)[&#39;headers&#39;][&#39;mtgsig&#39;]        &#125;         &#39;&#39;&#39; % (data,myHy)    )    return result</code></pre><p>最终生成mtgsig</p><h2 id="flask框架冲突"><a href="#flask框架冲突" class="headerlink" title="flask框架冲突"></a>flask框架冲突</h2><p>在使用flask框架写服务的时候发现调用playwright会出现这样一个问题<br>gevent的异步执行阻塞错误<br>解决方法 :启动服务前先调用monkey.patch_all() 再启动服务就不会报错</p><pre><code>if __name__ == &#39;__main__&#39;:    from gevent import monkey    monkey.patch_all()    app.debug = True    app.run(        host = &#39;0.0.0.0&#39;,        port = 5000    )</code></pre>]]></content>
     
@@ -30,7 +30,7 @@
     
     
     
-    <category term="逆向，知识点补充" scheme="https://my.wjtblog.online/categories/%E9%80%86%E5%90%91%EF%BC%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/"/>
+    <category term="逆向" scheme="https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/"/>
     
     
     <category term="技术" scheme="https://my.wjtblog.online/tags/%E6%8A%80%E6%9C%AF/"/>

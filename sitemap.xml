@@ -182,13 +182,6 @@
 
   
   <url>
-    <loc>https://my.wjtblog.online/tags/%E6%8F%92%E7%94%BB/</loc>
-    <lastmod>2023-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://my.wjtblog.online/tags/biya/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -204,6 +197,13 @@
   
   <url>
     <loc>https://my.wjtblog.online/tags/%E7%BE%8E%E5%A5%B3/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://my.wjtblog.online/tags/%E6%8F%92%E7%94%BB/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -255,13 +255,6 @@
   
   <url>
     <loc>https://my.wjtblog.online/categories/%E9%80%86%E5%90%91/</loc>
-    <lastmod>2023-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://my.wjtblog.online/categories/%E9%80%86%E5%90%91%EF%BC%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
