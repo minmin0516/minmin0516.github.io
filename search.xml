@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>拼多多 anti-content 加密参数分析</title>
+      <link href="/undefined/9a200768.html"/>
+      <url>/undefined/9a200768.html</url>
+      
+        <content type="html"><![CDATA[<span class='p center logo large'>拼多多 anti-content 加密参数分析</span><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>分析请求：在首页获取商品的请求中会携带anti-content加密参数<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/anti.png"/></div></div></p><h2 id="逆向分析"><a href="#逆向分析" class="headerlink" title="逆向分析"></a>逆向分析</h2><p>直接搜索anti-content 并进行断点操作<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/duandian.png"/></div></div></p><p>最后发现是e.sent()这个方法进行加密 最终生成的参数跟请求的一致<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/sent.png"/></div></div></p><p>再往前推就是看到一个函数名叫getAntiContent() 这个命名一看就很可疑打断点看看是什么<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/getAntiContent.png"/></div></div><br>最后定位到n. getRiskControlInfoAsync()函数</p><p>继续往前进<br>又看到老朋友promise函数了<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/promise.png"/></div></div><br>最终定位到生成方法<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/done.png"/></div></div></p><p>逻辑走通了 接下来开始还原了</p><h2 id="参数还原"><a href="#参数还原" class="headerlink" title="参数还原"></a>参数还原</h2><p>在作者尝试手动还原之前看到了这样一段代码段<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/webpack.png"/></div></div><br>这个是典型的webpack加载器</p><h2 id="简单介绍webpack加载器"><a href="#简单介绍webpack加载器" class="headerlink" title="简单介绍webpack加载器"></a>简单介绍webpack加载器</h2><p>webpack是当前前端最热门的模块化管理和打包工具,本质上webpack只是一个现代Js应用程序的静态模块打包，并不是混淆工具，尽管webpack有一些插件可以把代码混淆化，所以现在很多网站都把webpack和obfuscator混淆工具结合起来使用，对于我们来说只要导出通用方法即可调用</p><h2 id="webpack调用方式"><a href="#webpack调用方式" class="headerlink" title="webpack调用方式"></a>webpack调用方式</h2><p>定义window为global变量<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/global.png"/></div></div></p><p>将加载器变成window.xxxx = 入口函数的形式<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/rukou.png"/></div></div></p><p>在函数的最后加上()改成自调用函数的形式<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/zidiaoyong.png"/></div></div></p><p>最后使用result.messagePack()<br>messagePack这个函数可以根据前面的断点确定调用方法<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/messagePack.png"/></div></div></p><p>接下来就是补环境了<br>老样子导入proxy.js<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/proxy.png"/></div></div></p><p>然后就是根据报错信息以及undfine的提示进行补充<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/buduanjing.png"/></div></div></p><p>最终的生成结果<br><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/pinduoduo/result.png"/></div></div></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 逆向 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> 逆向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>快手滑动验证码</title>
       <link href="/undefined/a4a76f26.html"/>
       <url>/undefined/a4a76f26.html</url>
